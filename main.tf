@@ -1,3 +1,16 @@
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "5.33.0"
+    }
+  }
+}
+
+provider "aws" {
+  # Configuration options
+}
+
 #creating the VPC for the infrastructure
 resource "aws_vpc" "HESTIO_VPC" {
   cidr_block = "10.0.0.0/16"
@@ -30,7 +43,7 @@ resource "aws_internet_gateway" "HESTIO_IGW" {
 }
 #Creating Elastic IP for the NAT Gateway
 resource "aws_eip" "HESTIO_EIP1" {
-  vpc = true
+  domain   = "vpc"
   tags = {
     Name = "HESTIO_EIP1"
   }
@@ -138,7 +151,7 @@ resource "aws_key_pair" "HESTIO_KEY" {
 
 #Creating the  Elastic IP FOR VM WITH THE PUBLIC SUBNET
 resource "aws_eip" "HESTIO_EIP2" {
-  vpc = true
+  domain   = "vpc"
   tags = {
     Name = "HESTIO_EIP2"
   }
