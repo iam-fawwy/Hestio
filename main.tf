@@ -1,16 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = "5.33.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = "eu-west-2"
-}
-
 #creating the VPC for the infrastructure
 resource "aws_vpc" "HESTIO_VPC" {
   cidr_block = "10.0.0.0/16"
