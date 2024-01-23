@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  # Configuration options
+  region = "eu-west-2"
 }
 
 #creating the VPC for the infrastructure
